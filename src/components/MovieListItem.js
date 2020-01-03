@@ -21,7 +21,9 @@ class MovieListItem extends Component{
         </div>
         { this.state.show && (
           <div className="w-full bg-gray-200 text-gray-800 border-t border-gray-300 p-4">
-            <p>Loreum ipsum dolor sed</p>
+            <ul className="list-none">
+              { Object.keys(this.props.movie.details).map(key => <li key={key}><span className="font-bold capitalize">{key}:</span> {this.props.movie.details[key]} </li> ) }
+            </ul>
           </div> )
         }
       </div>

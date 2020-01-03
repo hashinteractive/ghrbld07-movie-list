@@ -16,7 +16,7 @@ class Search extends Component{
     return(
       <div className="inline-flex mt-4">
         <input onChange={this.updateValue} value={this.state.value} className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 py-2 px-4 block w-full appearance-none leading-normal" placeholder="search movies..." />
-        <button onClick={() => { this.props.search(this.state.value) }} className="w-1/4 bg-gray-300 text-gray-700 py-2 px-4">
+        <button onClick={() => { this.props.search(this.state.value) }} className="w-1/4 bg-gray-300 text-gray-700 py-2 px-4 text-sm">
           Search
         </button>
       </div>

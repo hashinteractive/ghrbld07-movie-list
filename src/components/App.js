@@ -20,12 +20,48 @@ class App extends Component{
     this.toggleWatched = this.toggleWatched.bind(this)
     this.state = {
       movies: [
-        {id: 1, title: 'Mean Girls', watched: true},
-        {id: 2, title: 'Hackers', watched: false},
+        { 
+          id: 1,
+          title: 'Mean Girls',
+          watched: true,
+          details: {
+            year: "1995",
+            length: "110 min",
+            rating: 5
+          }
+        },
+        {
+          id: 2,
+          title: 'Hackers',
+          watched: false,
+          details: {
+            year: "2005",
+            length: "120 min",
+            rating: 4
+          }
+        },
       ],
       defaults: [
-        {id: 1, title: 'Mean Girls', watched: true},
-        {id: 2, title: 'Hackers', watched: false},
+        { 
+          id: 1,
+          title: 'Mean Girls',
+          watched: true,
+          details: {
+            year: "1995",
+            length: "110 min",
+            rating: 5
+          }
+        },
+        {
+          id: 2,
+          title: 'Hackers',
+          watched: false,
+          details: {
+            year: "2005",
+            length: "120 min",
+            rating: 4
+          }
+        }
       ]
     }
   }
@@ -40,9 +76,10 @@ class App extends Component{
   addMovie(value){
     const maxId = this.state.movies.length ? Math.max(...this.state.movies.map(m => m.id)) : 0
     const movie = {
-      title: value,
       id: maxId + 1,
-      watched: true 
+      title: value,
+      watched: true,
+      details: {} 
     }
     this.setState({ movies: [...this.state.movies, movie] }, () => {
       //when adding a successful movie update all movies to defaults
