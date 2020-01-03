@@ -3,6 +3,7 @@ import AppClass from './App.module.css'
 import MovieList from './MovieList'
 import Search from './Search'
 import AddMovie from './AddMovie'
+import ToggleButton from './ToggleButton'
 
 // const defaults = [
 //   {id: 1, title: 'Mean Girls'},
@@ -15,6 +16,7 @@ import AddMovie from './AddMovie'
 class App extends Component{
   constructor(){
     super()
+    this.setWatchedState = this.setWatchedState.bind(this)
     this.addMovie = this.addMovie.bind(this)
     this.searchMovies = this.searchMovies.bind(this)
     this.toggleWatched = this.toggleWatched.bind(this)
@@ -62,8 +64,12 @@ class App extends Component{
             rating: 4
           }
         }
-      ]
+      ],
+      watched: true 
     }
+  }
+  setWatchedState(bool){
+    this.setState({ watched: bool })
   }
   searchMovies(value){
     if(!value){
@@ -78,7 +84,7 @@ class App extends Component{
     const movie = {
       id: maxId + 1,
       title: value,
-      watched: true,
+      watched: this.state.watched,
       details: {} 
     }
     this.setState({ movies: [...this.state.movies, movie] }, () => {
@@ -100,12 +106,14 @@ class App extends Component{
     })
   }
   render(){
+    const d = new Date()
     return(
-      <div className="flex flex-col max-w-xl mx-auto my-8 border border-gray-300">
+      <div className="flex flex-col max-w-xl mx-auto my-16 border border-gray-300">
         <div className="w-100 py-3 px-5 bg-gray-200">
-          <h5 className="text-2xl text-gray-900">Movie List</h5>
+          <h5 className="text-2xl text-gray-900">Movie List {d.getFullYear()} </h5>
         </div>
         <div className="flex flex-col w-100 p-8">
+          <ToggleButton watched={this.setWatchedState} />
           <AddMovie add={this.addMovie} />
           <Search search={this.searchMovies} />
           <MovieList 

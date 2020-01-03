@@ -25,8 +25,8 @@ class MovieList extends Component{
                    toggle={this.props.toggle.bind(null, movie)} />
                )
     }
-    const bgWatched = this.state.watched ? 'bg-green-400 text-white' : 'bg-gray-300'
-    const bgToWatch = !this.state.watched ? 'bg-green-400 text-white' : 'bg-gray-300'
+    const bgWatched = this.state.watched ? 'bg-green-400 text-white shadow' : 'bg-gray-300 text-gray-600'
+    const bgToWatch = !this.state.watched ? 'bg-blue-400 text-white shadow' : 'bg-gray-300 text-gray-600'
     return(
       <div className="flex flex-col mt-4">
         <div className="flex">
